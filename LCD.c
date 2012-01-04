@@ -112,12 +112,57 @@ void lcdDrawChar(uint16_t x, uint16_t y, const char c, uint16_t colour, uint8_t 
 		Mask = 0x80;
 		for (j = 0; j < nCols; j += 2) {
 			if ( (PixelRow >> 7-j) & 0x01 == 0x01) {
-				lcd_set_point_lld(x+j,y+i, colour);
+				lcdSetPixel(x+j,y+i, colour);
 			} else {
 				/* handle background colour somehow - maybe passed to this function? or store when set */
-				//lcd_set_point_lld(Xpos+j,Ypos+i,bkColor);
+				//lcdSetPixel(Xpos+j,Ypos+i,colour);
 			}
 
+		}
+	}
+}
+
+void lcdDrawLine(int x0, int y0, int x1, int y1,uint16_t colour)
+{
+	int x,y,dx,dy,Dx,Dy,e,i;
+	Dx=x1-x0;
+	Dy=y1-y0;
+
+	dx=fabs(x1-x0);
+	dy=fabs(y1-y0);
+	x=x0;
+	y=y0;
+	if(dy>dx) {
+		e=-dy;
+		for(i=0;i<dy;i++)
+		{
+			lcdSetPixel(x,y,colour);
+			if(Dy>=0) y++;
+			else y--;
+			e+=2*dx;
+			if(e>=0)
+			{
+				if(Dx>=0) x++;
+				else x--;
+				e-=2*dy;
+			}
+		}
+	}
+	else
+	{
+		e=-dx;
+		for(i=0;i<dx;i++)
+		{
+			lcdSetPixel(x,y,colour);
+			if(Dx>=0) x++;
+			else x--;
+			e+=2*dy;
+			if(e>=0)
+			{
+				if(Dy>=0) y++;
+				else y--;
+				e-=2*dx;
+			}
 		}
 	}
 }

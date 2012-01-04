@@ -13,7 +13,7 @@ extern "C" {
 void lcd_init_lld(void);
 void lcd_set_area_lld(uint16_t, uint16_t, uint16_t, uint16_t);
 void lcd_fill_area_lld(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t);
-void lcd_set_point_lld(uint16_t, uint16_t, uint16_t);
+void lcd_set_pixel_lld(uint16_t, uint16_t, uint16_t);
 
 #ifdef __cplusplus
 }

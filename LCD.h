@@ -17,6 +17,7 @@ void lcdDemo(void);
 void lcdDrawString(uint16_t, uint16_t, const char *, uint16_t, uint8_t);
 void lcdDrawChar(uint16_t, uint16_t, const char, uint16_t, uint8_t);
 void lcdDrawBitmap(uint16_t x, uint16_t y, uint16_t width, uint16_t height, const unsigned char *bmp);
+void lcdDrawLine(int x0, int y0, int x1, int y1,uint16_t colour);
 float lcdFPS(void);
 
 #ifdef __cplusplus

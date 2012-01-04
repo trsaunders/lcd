@@ -148,7 +148,7 @@ void lcd_init_lld(void) {
 	/* TODO: add other devices from original code */
 }
 
-void lcd_set_point_lld(uint16_t x, uint16_t y, uint16_t colour) {
+void lcd_set_pixel_lld(uint16_t x, uint16_t y, uint16_t colour) {
 	lcd_set_cursor_lld(x, y);
 	LCD_WriteRAM_Prepare();
 	LCD_WriteRAM(colour);
